@@ -213,9 +213,6 @@ if st.session_state.rename_chat:
                 st.session_state.rename_chat = None
                 st.rerun()
                 
-        # ----------------------------------
-# Create First Chat Automatically
-# ----------------------------------
 
 if st.session_state.chat_id is None:
 
@@ -226,9 +223,7 @@ if st.session_state.chat_id is None:
     st.session_state.chat_id = first_chat
 
 
-# ----------------------------------
-# Main UI
-# ----------------------------------
+
 
 st.title("💻 Placement Code Assistant")
 
@@ -243,9 +238,7 @@ mode = st.selectbox(
 current_chat = st.session_state.chat_id
 
 
-# ----------------------------------
-# Display Previous Messages
-# ----------------------------------
+
 
 messages = get_messages(
     current_chat
@@ -258,18 +251,12 @@ for role, content in messages:
         st.markdown(content)
 
 
-# ----------------------------------
-# User Input
-# ----------------------------------
 
 prompt = st.chat_input(
     "Ask coding questions or paste code..."
 )
 
 
-# ----------------------------------
-# Process Prompt
-# ----------------------------------
 
 if prompt:
 
@@ -294,9 +281,7 @@ if prompt:
             prompt[:40]
         )
 
-    # ----------------------------------
-    # System Prompt
-    # ----------------------------------
+
 
     if mode == "Code Generation":
 
@@ -338,9 +323,6 @@ Provide:
 Never assume the code is correct.
 """
 
-    # ----------------------------------
-    # Build Conversation
-    # ----------------------------------
 
     convo = [
         {
@@ -362,9 +344,6 @@ Never assume the code is correct.
             }
         )
 
-    # ----------------------------------
-    # Generate Assistant Response
-    # ----------------------------------
 
     with st.chat_message("assistant"):
 
